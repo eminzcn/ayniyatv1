@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using ayniyatv1.Data;
+using System.ComponentModel.DataAnnotations;
 
 namespace ayniyatv1.Models
 {
@@ -13,5 +14,6 @@ namespace ayniyatv1.Models
         public string Foto { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime UpdateDate { get; set; }
+        public UrunKategori UrunKategori { get; set; }
     }
 }
