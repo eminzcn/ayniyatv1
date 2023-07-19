@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ayniyatv1.Models
 {
@@ -14,5 +15,9 @@ namespace ayniyatv1.Models
         public string Telefon { get; set;}
         public int Dahili { get; set; }
         public string Foto { get; set; }
+
+        // İlişkiler
+       
+        public List<Urun> Urunler { get; set; }
     }
 }
