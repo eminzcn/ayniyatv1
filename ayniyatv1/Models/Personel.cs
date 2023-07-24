@@ -14,7 +14,7 @@ namespace ayniyatv1.Models
         public string Gorevi { get; set; }
         public string Telefon { get; set;}
         public int Dahili { get; set; }
-        public string Foto { get; set; }
+        public string? Foto { get; set; }
 
         // İlişkiler
        

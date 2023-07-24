@@ -9,8 +9,30 @@ builder.Services.AddControllersWithViews();
 
 
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
+builder.Services.AddTransient<AppDbInitializer>();
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
 var app = builder.Build();
+
+
+if (args.Length == 1 && args[0].ToLower() == "seeddata")
+{
+    SeedData(app);
+}
+
+void SeedData(IHost app)
+{
+    var scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+    using (var scope = scopedFactory.CreateScope())
+    {
+        var service = scope.ServiceProvider.GetService<AppDbInitializer>();
+        service.Seed();
+    }
+}
+
+
+// Seed DataBase
+// AppDbInitializer.Seed(app);
+
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -30,4 +52,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+
 app.Run();
+
+
