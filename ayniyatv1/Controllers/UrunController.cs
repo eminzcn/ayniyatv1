@@ -1,5 +1,6 @@
 ﻿using ayniyatv1.Data;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ayniyatv1.Controllers
 {
@@ -13,10 +14,10 @@ namespace ayniyatv1.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Urunler.ToList();
-            return View();
+            var tumUrunler = await _context.Urunler.ToListAsync();
+            return View(tumUrunler);
         }
     }
 }

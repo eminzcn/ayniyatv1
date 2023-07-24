@@ -16,7 +16,7 @@ namespace ayniyatv1.Controllers
         public IActionResult Index()
         {
             var data = _context.Personeller.ToList();
-            return View();
+            return View(data);
         }
     }
 }
