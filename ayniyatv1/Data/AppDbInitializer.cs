@@ -60,8 +60,8 @@ namespace ayniyatv1.Data
                             Model ="EV230",
                             SeriNumarasi = "789451314E",
                             Foto = "",
-                            CreateDate = DateTime.Now.AddDays(-50),
-                            UpdateDate = DateTime.Now.AddDays(10),
+                            CreateDate = DateTime.Now,
+                            UpdateDate = DateTime.Now,
                             UrunKategori = UrunKategori.Dizustu,
                             PersonelId = 1
                         },

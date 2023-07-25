@@ -1,4 +1,5 @@
 using ayniyatv1.Data;
+using ayniyatv1.Data.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddControllersWithViews();
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<AppDbInitializer>();
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddScoped<IUrunService, UrunService>();
 var app = builder.Build();
 
 

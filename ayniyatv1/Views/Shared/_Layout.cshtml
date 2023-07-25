@@ -20,13 +20,28 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        
+                        <li class="navbar-nav flex-grow-1">
+                            <a class="nav-link text-dark" asp-controller="Personel" asp-action="Index"><i class="badge-info bi-person-fill"></i>Personeller</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+
+                        <li class="navbar-nav flex-grow-1">
+                            <a class="nav-link text-dark" asp-controller="Urun" asp-action="Index"><i class="badge-info bi-speaker"></i>Ürünler</a>
                         </li>
+
+                        @*<li class="navbar-nav dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="badge-info bi-speaker"></i>Ürünler
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item"></a>
+                            </div>
+                        </li>*@
+
                     </ul>
+
+
+
                 </div>
             </div>
         </nav>

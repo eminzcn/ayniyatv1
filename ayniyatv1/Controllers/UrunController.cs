@@ -1,4 +1,5 @@
 ﻿using ayniyatv1.Data;
+using ayniyatv1.Data.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,16 +8,16 @@ namespace ayniyatv1.Controllers
     public class UrunController : Controller
     {
 
-        private readonly AppDbContext _context;
+        private readonly IUrunService _service;
 
-        public UrunController(AppDbContext context)
+        public UrunController(IUrunService service)
         {
-            _context = context;
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var tumUrunler = await _context.Urunler.ToListAsync();
+            var tumUrunler = await _service.GetAll();
             return View(tumUrunler);
         }
     }
