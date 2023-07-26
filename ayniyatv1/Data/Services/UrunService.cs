@@ -14,7 +14,8 @@ namespace ayniyatv1.Data.Services
 
         public void Add(Urun urun)
         {
-            throw new NotImplementedException();
+            _context.Urunler.Add(urun);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)

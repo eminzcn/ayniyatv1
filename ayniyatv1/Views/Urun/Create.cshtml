@@ -1,0 +1,72 @@
+﻿@model Urun
+
+@{
+    ViewData["Title"] = "Yeni Ürün Ekle";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Yeni Ürün Ekle</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger">
+
+                    </div>
+                </form>
+                <div class="form-group text-center">
+                    <img id="FotoOngoruntuleme"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Foto" class="control-label"></label>
+                    <input asp-for="Foto" class="form-control"/>
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Marka" class="control-label"></label>
+                    <input asp-for="Marka" class="form-control" />
+                    <span asp-validation-for="Marka" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SeriNumarasi" class="control-label"></label>
+                    <input asp-for="SeriNumarasi" class="form-control" />
+                    <span asp-validation-for="SeriNumarasi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UrunKategori" class="control-label"></label>
+                    <input asp-for="UrunKategori" class="form-control" />
+                    <span asp-validation-for="UrunKategori" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Personel.Adi" class="control-label"></label>
+                    <input asp-for="Personel.Adi" class="form-control" />
+                    <span asp-validation-for="Personel.Adi" class="text-danger"></span>
+                </div>
+
+            
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-outline-success float-right"/>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+                    @section Scripts{
+                        <script>
+                            $("#Foto").on("change", function () {
+                                var output = document.getElementById('FotoOngoruntuleme');
+                                output.src = $(this).val();
+                            })
+                        </script>
+                    }
