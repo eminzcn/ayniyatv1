@@ -1,4 +1,6 @@
-﻿@model Urun
+﻿@using ayniyatv1.Data;
+@using System.ComponentModel.DataAnnotations;
+@model Urun
 
 @{
     ViewData["Title"] = "Yeni Ürün Ekle";
@@ -13,48 +15,55 @@
             <div class="col-md-8 offset-2">
                 <form asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger">
-
                     </div>
                 </form>
                 <div class="form-group text-center">
-                    <img id="FotoOngoruntuleme"/>
+                    <img id="FotoOngoruntuleme" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Foto" class="control-label"></label>
-                    <input asp-for="Foto" class="form-control"/>
+                    <input asp-for="Foto" class="form-control" placeholder="Lütfen Ürüne Ait Fotoğraf Ekleyiniz..." />
                     <span asp-validation-for="Foto" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Marka" class="control-label"></label>
-                    <input asp-for="Marka" class="form-control" />
+                    <input asp-for="Marka" class="form-control" placeholder="Lütfen Ürüne Ait Marka Bilgisi Ekleyiniz..." />
                     <span asp-validation-for="Marka" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Model" class="control-label"></label>
-                    <input asp-for="Model" class="form-control" />
+                    <input asp-for="Model" class="form-control" placeholder="Lütfen Ürüne Ait Model Bilgisi Ekleyiniz..." />
                     <span asp-validation-for="Model" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SeriNumarasi" class="control-label"></label>
-                    <input asp-for="SeriNumarasi" class="form-control" />
+                    <input asp-for="SeriNumarasi" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." />
                     <span asp-validation-for="SeriNumarasi" class="text-danger"></span>
                 </div>
+                
                 <div class="form-group">
                     <label asp-for="UrunKategori" class="control-label"></label>
-                    <input asp-for="UrunKategori" class="form-control" />
-                    <span asp-validation-for="UrunKategori" class="text-danger"></span>
+                    <div>
+                        <select class="form-control text-secondary"" asp-for="UrunKategori">
+                            <option selected="selected" value="">Lütfen Kategori Seçiniz...</option>
+                            @foreach (var item in Html.GetEnumSelectList<UrunKategori>())
+                            {
+                                <!option value="@item.Value">@item.Text</!option>
+                            }
+                        </select>
+                        <span asp-validation-for="UrunKategori" class="text-danger" />
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <label asp-for="Personel.Adi" class="control-label"></label>
-                    <input asp-for="Personel.Adi" class="form-control" />
+                    <label asp-for="Personel.Adi" class="control-label">PERSONEL/BİRİM ADI</label>
+                    <input asp-for="Personel.Adi" class="form-control" placeholder="Lütfen Ürünün Ait Olduğu Personel/Birim Bilgisi Ekleyiniz..." />
                     <span asp-validation-for="Personel.Adi" class="text-danger"></span>
                 </div>
 
-            
-
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-outline-success float-right"/>
+                <div class="form-group py-2">
                     <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
+                    <input type="submit" value="Create" class="btn btn-outline-success float-right" />
                 </div>
 
             </div>
@@ -62,11 +71,11 @@
     </div>
 </div>
 
-                    @section Scripts{
-                        <script>
-                            $("#Foto").on("change", function () {
-                                var output = document.getElementById('FotoOngoruntuleme');
-                                output.src = $(this).val();
-                            })
-                        </script>
+@section Scripts{
+    <script>
+        $("#Foto").on("change", function () {
+            var output = document.getElementById('FotoOngoruntuleme');
+            output.src = $(this).val();
+        })
+    </script>
                     }

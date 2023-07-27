@@ -7,7 +7,7 @@ namespace ayniyatv1.Models
     {
         [Key]
         public long Id { get; set; }
-        [Display(Name = "ADI")]
+        [Display(Name = "PERSONEL ADI")]
         public string Adi { get; set; }
         [Display(Name = "SOYADI")]
         public string Soyadi { get; set; }

@@ -22,8 +22,6 @@ namespace ayniyatv1.Controllers
             return View(tumUrunler);
         }
 
-
-
         public IActionResult Create()
         {
             return View();

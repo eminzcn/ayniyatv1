@@ -21,6 +21,7 @@ namespace ayniyatv1.Models
         public string? Foto { get; set; }
         public DateTime? CreateDate { get; set; }
         public DateTime? UpdateDate { get; set; }
+      
         [Display(Name = "ÜRÜN KATEGORİSİ")]
         [Required(ErrorMessage = "Lütfen Ürün Kategorisi Bilgisi Seçiniz...")]
         public UrunKategori UrunKategori { get; set; }

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Urun>
+﻿@using ayniyatv1.Data;
+@model IEnumerable<Urun>
 
 @{
     ViewData["Title"] = "Ürünler";
@@ -36,7 +37,8 @@
                         </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.UrunKategori)
-                        </td>
+@*                            @Html.DropDownListFor(m => m, Html.GetEnumSelectList(typeof(UrunKategori)))
+*@                        </td>
                         <td class="align-middle">
                             @Html.DisplayFor(modelItem => item.Personel.Adi)
                         </td>
@@ -52,6 +54,6 @@
     </div>
 </div>
 
-                        <div style="position: fixed; right:25px; bottom: 125px;" class="text-white">
-                            <a asp-controller="Urun" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i>Yeni Ekle</a>
-                        </div>
+<div style="position: fixed; right:25px; bottom: 75px;" class="text-white">
+    <a asp-controller="Urun" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i>Yeni Ekle</a>
+</div>
