@@ -18,25 +18,35 @@ namespace ayniyatv1.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var tumUrunler = await _service.GetAll();
+            var tumUrunler = await _service.GetAllAsync();
             return View(tumUrunler);
         }
 
+        // Get: Urun/Create
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Marka, Model, SeriNumarasi, Foto, CreateDate, UpdateDate, UrunKategori, PersonelId")] Urun urun)
+        public async Task<IActionResult> Create([Bind("Marka,Model,SeriNumarasi,Foto,UrunKategori,PersonelId")] Urun urun)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(urun);
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return View(urun);
+            //}
 
-            _service.Add(urun);
+            await _service.AddAsync(urun);
             return RedirectToAction(nameof(Index));
+        }
+
+        // Get: Ürün Detay
+        public async Task<IActionResult> Details(int id)
+        {
+            var urunDetay = await _service.GetByIdAsync(id);
+
+            if (urunDetay == null) return View("Boş");
+            return View(urunDetay);
         }
     }
 }

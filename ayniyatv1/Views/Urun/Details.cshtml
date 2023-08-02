@@ -1,0 +1,92 @@
+﻿@using ayniyatv1.Data;
+@using System.ComponentModel.DataAnnotations;
+@model Urun;
+
+@{
+    ViewData["Title"] = "Yeni Ürün Ekle";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>@Model.Marka @Model.Model için Ürün Detayı </h1>
+            <h3>@Model.SeriNumarasi @Model.Personel</h3>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px" id="FotoOngoruntuleme" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Foto" class="control-label"></label>
+                    <input asp-for="Foto" class="form-control" placeholder="Lütfen Ürüne Ait Fotoğraf Ekleyiniz..." readonly />
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Marka" class="control-label"></label>
+                    <input asp-for="Marka" class="form-control" placeholder="Lütfen Ürüne Ait Marka Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Marka" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Model" class="control-label"></label>
+                    <input asp-for="Model" class="form-control" placeholder="Lütfen Ürüne Ait Model Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Model" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SeriNumarasi" class="control-label"></label>
+                    <input asp-for="SeriNumarasi" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="SeriNumarasi" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="CreateDate" class="control-label"></label>
+                    <input asp-for="CreateDate" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="CreateDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UpdateDate" class="control-label"></label>
+                    <input asp-for="UpdateDate" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="UpdateDate" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="UrunKategori" class="control-label"></label>
+                    <input asp-for="UrunKategori" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="UrunKategori" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PersonelId" class="control-label"></label>
+                    <input asp-for="PersonelId" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="PersonelId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group py-2">
+                    <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
+                    <a class="btn btn-outline-success" float-right asp-action="Edit" asp-route-id="@Model.Id">Güncelle</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*  *@
+
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            var output = document.getElementById('FotoOngoruntuleme');
+            output.src = $("#Foto").val();
+        })
+
+        $("#Foto").on("change", function () {
+            var output = document.getElementById('FotoOngoruntuleme');
+            output.src = $(this).val();
+        })
+    </script>
+    }
