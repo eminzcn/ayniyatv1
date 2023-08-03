@@ -6,6 +6,7 @@ namespace ayniyatv1.Models
 {
     public class Urun
     {
+      
         [Key]
         public int Id { get; set; }
         [Display(Name = "MARKA")]
@@ -28,8 +29,8 @@ namespace ayniyatv1.Models
         [Display(Name = "ZİMMET")]
         [Required(ErrorMessage = "Lütfen Personel ya da Birim Seçiniz...")]
         public long PersonelId { get; set; }
-        [ForeignKey("PersonelId")]
-        public virtual Personel Personel { get; set; }  
+        [ForeignKey("PersonelId")] 
+        public virtual Personel? Personel { get; set; }  
        
      
     }

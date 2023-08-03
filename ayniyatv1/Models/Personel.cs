@@ -24,6 +24,6 @@ namespace ayniyatv1.Models
 
         // İlişkiler
        
-        public List<Urun> Urunler { get; set; }
+        public virtual List<Urun> Urunler { get; set; }
     }
 }

@@ -29,12 +29,12 @@ namespace ayniyatv1.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([Bind("Marka,Model,SeriNumarasi,Foto,UrunKategori,PersonelId")] Urun urun)
+        public async Task<IActionResult> Create(Urun urun)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return View(urun);
-            //}
+            if (!ModelState.IsValid)
+            {
+                return View(urun);
+            }
 
             await _service.AddAsync(urun);
             return RedirectToAction(nameof(Index));
