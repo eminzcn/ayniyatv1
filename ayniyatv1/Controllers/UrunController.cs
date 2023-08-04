@@ -45,7 +45,7 @@ namespace ayniyatv1.Controllers
         {
             var urunDetay = await _service.GetByIdAsync(id);
 
-            if (urunDetay == null) return View("Bulunamadı");
+            if (urunDetay == null) return View("Bulunamadi");
             return View(urunDetay);
         }
 
@@ -53,7 +53,7 @@ namespace ayniyatv1.Controllers
         public async Task<IActionResult> Edit(int id)
         {
             var urunDetay = await _service.GetByIdAsync(id);
-            if (urunDetay == null) return View("Bulunamadı");
+            if (urunDetay == null) return View("Bulunamadi");
 
             return View(urunDetay);
         }
@@ -74,7 +74,7 @@ namespace ayniyatv1.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             var urunDetay = await _service.GetByIdAsync(id);
-            if (urunDetay == null) return View("Bulunamadı");
+            if (urunDetay == null) return View("Bulunamadi");
 
             return View(urunDetay);
         }
@@ -83,7 +83,7 @@ namespace ayniyatv1.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var urunDetay = await _service.GetByIdAsync(id);
-            if (urunDetay == null) return View("Bulunamadı");
+            if (urunDetay == null) return View("Bulunamadi");
 
             await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
