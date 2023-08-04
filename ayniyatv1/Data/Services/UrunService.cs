@@ -18,9 +18,11 @@ namespace ayniyatv1.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Urunler.FirstOrDefaultAsync(n => n.Id == id);
+            _context.Urunler.Remove(result);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Urun>> GetAllAsync()
@@ -35,9 +37,11 @@ namespace ayniyatv1.Data.Services
             return result;
         }
 
-        public Urun Update(int id, Urun yeniUrun)
+        public async Task<Urun> UpdateAsync(int id, Urun yeniUrun)
         {
-            throw new NotImplementedException();
+            _context.Update(yeniUrun);
+            await _context.SaveChangesAsync();
+            return yeniUrun;
         }
     }
 }

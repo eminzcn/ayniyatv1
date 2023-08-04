@@ -7,7 +7,7 @@ namespace ayniyatv1.Data.Services
         Task<IEnumerable<Urun>> GetAllAsync();
         Task<Urun> GetByIdAsync(int id);
         Task AddAsync(Urun urun);
-        Urun Update(int id, Urun yeniUrun);
-        void Delete(int id);
+        Task<Urun> UpdateAsync(int id, Urun yeniUrun);
+        Task DeleteAsync(int id);
     }
 }

@@ -3,17 +3,17 @@
 @model Urun;
 
 @{
-    ViewData["Title"] = "Yeni Ürün Ekle";
+    ViewData["Title"] = "Ürün Güncelle";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Yeni Ürün Ekle</h1>
+            <h1>Ürün Güncelle</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
-                <form asp-action="Create">
+                <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger">
                     </div>
 
@@ -82,7 +82,7 @@
 
                     <div class="form-group py-2">
                         <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
-                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <input type="submit" value="Güncelle" class="btn btn-outline-success float-right" />
                     </div>
                 </form>
             </div>

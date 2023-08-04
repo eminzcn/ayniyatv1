@@ -45,8 +45,49 @@ namespace ayniyatv1.Controllers
         {
             var urunDetay = await _service.GetByIdAsync(id);
 
-            if (urunDetay == null) return View("Boş");
+            if (urunDetay == null) return View("Bulunamadı");
             return View(urunDetay);
         }
+
+        // Get: Urun/Update
+        public async Task<IActionResult> Edit(int id)
+        {
+            var urunDetay = await _service.GetByIdAsync(id);
+            if (urunDetay == null) return View("Bulunamadı");
+
+            return View(urunDetay);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, Urun urun)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(urun);
+            }
+
+            await _service.UpdateAsync(id, urun);
+            return RedirectToAction(nameof(Index));
+        }
+
+        // Get: Urun/Delete
+        public async Task<IActionResult> Delete(int id)
+        {
+            var urunDetay = await _service.GetByIdAsync(id);
+            if (urunDetay == null) return View("Bulunamadı");
+
+            return View(urunDetay);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var urunDetay = await _service.GetByIdAsync(id);
+            if (urunDetay == null) return View("Bulunamadı");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

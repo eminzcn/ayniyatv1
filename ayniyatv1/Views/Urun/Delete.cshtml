@@ -3,13 +3,13 @@
 @model Urun;
 
 @{
-    ViewData["Title"] = "Ürün Detayı";
+    ViewData["Title"] = "Ürün Silme";
 }
 
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>@Model.Marka @Model.Model için Ürün Detayı</h1>
+            <h1>@Model.Marka @Model.Model için Ürün Silme</h1>
             <h3>@Model.SeriNumarasi @Model.Personel</h3>
         </p>
         <div class="row">
@@ -65,7 +65,10 @@
 
                 <div class="form-group py-2">
                     <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
-                    <a class="btn btn-outline-success" float-right asp-action="Edit" asp-route-id="@Model.Id">Güncelle</a>
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="submit" value="Onayla" class="btn btn-danger" />
+                    </form>
                 </div>
 
             </div>
