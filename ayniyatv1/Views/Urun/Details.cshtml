@@ -9,8 +9,9 @@
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>@Model.Marka @Model.Model için Ürün Detayı</h1>
-            <h3>@Model.SeriNumarasi @Model.Personel</h3>
+            <h1 class="text-center">@Model.Marka @Model.Model için Ürün Detayı</h1>
+            <h3 class="text-center">@Model.SeriNumarasi @Model.Personel</h3>
+            <img src="@Model.Foto" class="border-info rounded-circle mx-auto d-block py-2" style="max-height: 100px" id="FotoOngoruntuleme" />
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
@@ -65,7 +66,7 @@
 
                 <div class="form-group py-2">
                     <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
-                    <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Güncelle</a>
+                    <a class="btn btn-outline-success float-end" asp-action="Edit" asp-route-id="@Model.Id">Güncelle</a>
                 </div>
 
             </div>
@@ -82,11 +83,47 @@
         $(document).ready(function () {
             var output = document.getElementById('FotoOngoruntuleme');
             output.src = $("#Foto").val();
-        })
+            //1._>
+            $.ajax({
+                url: '@Url.Action("GetirPersonelListe","Personel")',
+                method: 'GET',
+                success: function (data) {
+                    //$('#PersonelId').html('');
+                    $.each(data, function (key, value) {
+                        $('#PersonelId').append('<option value="' + value.id + '">' + value.adi + ' ' + value.soyadi + '</option>');
+                    });
+                }
 
+            });
+        });
+        $('#PersonelId').on('input', function () {
+
+            var val = $(this).val();
+            if (val.length > 2) {
+                $.ajax({
+                    url: '@Url.Action("GetirPersonel","Personel")?adSoyad=' + val,
+                    method: 'GET',
+                    success: function (data) {
+                        $('#persData').html('');
+                        $('#secPers').html('');
+
+                        $.each(data, function (key, value) {
+                            $('#persData').append('<div onclick="sec(' + value.id + ',\'' + value.adi + ' ' + value.soyadi + '\')" style="border-bottom: 1px solid;">' + value.adi + ' ' + value.soyadi + '</div>');
+                        });
+                    }
+                });
+            }
+
+        });
+        function sec(id, adsoyad) {
+            $('#secPers').html(adsoyad);
+            $('#persSetId').val(id);
+            $('#persData').html('');
+            $('#PersonelId').val('');
+        }
         $("#Foto").on("change", function () {
             var output = document.getElementById('FotoOngoruntuleme');
             output.src = $(this).val();
-        })
+
     </script>
     }

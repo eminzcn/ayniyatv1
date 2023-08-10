@@ -9,7 +9,7 @@
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Personel Bilgisi Güncelle</h1>
+            <h1 class="text-center">Personel Bilgisi Güncelle</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
@@ -56,14 +56,14 @@
                         <span asp-validation-for="Dahili" class="text-danger"></span>
                     </div>
                     <div class="text-muted text-center py-2">
-                        <h5>Personele ait ürün listesi gelecek</h5>
+                        <h5>Personele Ait Ürün Listesi</h5>
                     </div>
 
 
 
                     <div class="form-group py-2">
                         <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
-                        <input type="submit" value="Güncelle" class="btn btn-outline-success float-right" />
+                        <input type="submit" value="Güncelle" class="btn btn-outline-success float-end" />
                     </div>
                 </form>
             </div>
@@ -78,46 +78,46 @@
             var output = document.getElementById('FotoOngoruntuleme');
             output.src = $("#Foto").val();
             //1._>
-            //$.ajax({
-            //    url: '@Url.Action("GetirPersonelListe","Personel")',
-            //    method: 'GET',
-            //    success: function (data) {
-            //        //$('#PersonelId').html('');
-            //        $.each(data, function (key, value) {
-            //            $('#PersonelId').append('<option value="' + value.id + '">' + value.adi + ' ' + value.soyadi + '</option>');
-            //        });
-            //    }
+            $.ajax({
+                url: '@Url.Action("GetirPersonelListe","Personel")',
+                method: 'GET',
+                success: function (data) {
+                    //$('#PersonelId').html('');
+                    $.each(data, function (key, value) {
+                        $('#PersonelId').append('<option value="' + value.id + '">' + value.adi + ' ' + value.soyadi + '</option>');
+                    });
+                }
 
-            //});
+            });
         });
-        //$('#PersonelId').on('input', function () {
+        $('#PersonelId').on('input', function () {
 
-        //    var val = $(this).val();
-        //    if (val.length > 2) {
-        //        $.ajax({
-        //            url: '@Url.Action("GetirPersonel","Personel")?adSoyad=' + val,
-        //            method: 'GET',
-        //            success: function (data) {
-        //                $('#persData').html('');
-        //                $('#secPers').html('');
+            var val = $(this).val();
+            if (val.length > 2) {
+                $.ajax({
+                    url: '@Url.Action("GetirPersonel","Personel")?adSoyad=' + val,
+                    method: 'GET',
+                    success: function (data) {
+                        $('#persData').html('');
+                        $('#secPers').html('');
 
-        //                $.each(data, function (key, value) {
-        //                    $('#persData').append('<div onclick="sec(' + value.id + ',\'' + value.adi + ' ' + value.soyadi + '\')" style="border-bottom: 1px solid;">' + value.adi + ' ' + value.soyadi + '</div>');
-        //                });
-        //            }
-        //        });
-        //    }
+                        $.each(data, function (key, value) {
+                            $('#persData').append('<div onclick="sec(' + value.id + ',\'' + value.adi + ' ' + value.soyadi + '\')" style="border-bottom: 1px solid;">' + value.adi + ' ' + value.soyadi + '</div>');
+                        });
+                    }
+                });
+            }
 
-        //});
-        //function sec(id, adsoyad) {
-        //    $('#secPers').html(adsoyad);
-        //    $('#persSetId').val(id);
-        //    $('#persData').html('');
-        //    $('#PersonelId').val('');
-        //}
+        });
+        function sec(id, adsoyad) {
+            $('#secPers').html(adsoyad);
+            $('#persSetId').val(id);
+            $('#persData').html('');
+            $('#PersonelId').val('');
+        }
         $("#Foto").on("change", function () {
             var output = document.getElementById('FotoOngoruntuleme');
             output.src = $(this).val();
-        })
+
     </script>
     }
