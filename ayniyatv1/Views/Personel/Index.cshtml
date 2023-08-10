@@ -5,18 +5,18 @@
 }
 
 <div class="row">
-    <div class="col-md-8 offset-md-2">
-        <table class="table">
+    <div class="col-md-10 offset-1">
+        <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>@Html.DisplayNameFor(model => model.Foto)</th>
-                    <th>@Html.DisplayNameFor(model => model.Adi)</th>
-                    <th>@Html.DisplayNameFor(model => model.Soyadi)</th>
-                    <th>@Html.DisplayNameFor(model => model.Birimi)</th>
-                    <th>@Html.DisplayNameFor(model => model.Gorevi)</th>
-                    <th>@Html.DisplayNameFor(model => model.Telefon)</th>
-                    <th>@Html.DisplayNameFor(model => model.Dahili)</th>
-                    <th>DÜZENLE</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Foto)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Adi)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Soyadi)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Birimi)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Gorevi)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Telefon)</th>
+                    <th class="text-center">@Html.DisplayNameFor(model => model.Dahili)</th>
+                    <th class="text-center">DÜZENLE</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,7 +24,7 @@
                 {
                         <tr>
                             <td class="align-middle">
-                                <img class="rounded-circle" src="@item.Foto" alt="@item.Adi" style="max-width: 150px">
+                            <img class="rounded mx-auto d-block" src="@(item.Foto?? "https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png")" alt="@item.Adi" style="max-height: 70px">
                             </td>
                             <td class="align-middle">
                                 @Html.DisplayFor(modelItem => item.Adi)
@@ -44,10 +44,10 @@
                             <td class="align-middle">
                                 @Html.DisplayFor(modelItem => item.Dahili)
                             </td>
-                            <td class="align-middle">
-                                <a class="btn btn-outline-primary"><i class="bi bi-pencil-square"></i> Düzenle</a>
-                                <a class="btn btn-outline-info"><i class="bi bi-eye"></i> Detay</a>
-                                <a class="btn btn-outline-danger"><i class="bi bi-trash"></i> Sil</a>
+                        <td class="align-middle text-center">
+                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Düzenle</a> |
+                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i> Detay</a> |
+                            <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i> Sil</a>
                             </td>
                             
                         </tr>
@@ -55,3 +55,6 @@
             </tbody>
         </table>
         </div></div>
+<div style="position: fixed; right:25px; bottom: 75px;" class="text-white">
+    <a asp-controller="Personel" asp-action="Create" class="btn btn-success"><i class="bi bi-plus-circle"></i>Yeni Personel Ekle</a>
+</div>

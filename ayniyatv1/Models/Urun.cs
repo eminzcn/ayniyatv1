@@ -27,8 +27,8 @@ namespace ayniyatv1.Models
         [Required(ErrorMessage = "Lütfen Ürün Kategorisi Bilgisi Seçiniz...")]
         public UrunKategori UrunKategori { get; set; }
         [Display(Name = "ZİMMET")]
-        [Required(ErrorMessage = "Lütfen Personel ya da Birim Seçiniz...")]
-        public long PersonelId { get; set; }
+     
+        public Nullable<long> PersonelId { get; set; }
         [ForeignKey("PersonelId")] 
         public virtual Personel? Personel { get; set; }  
        

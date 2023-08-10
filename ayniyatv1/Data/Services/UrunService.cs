@@ -27,7 +27,7 @@ namespace ayniyatv1.Data.Services
 
         public async Task<IEnumerable<Urun>> GetAllAsync()
         {
-            var result = await _context.Urunler.Include(d=>d.Personel).ToListAsync();
+            var result = await _context.Urunler.Include(d => d.Personel).ToListAsync();
             return result;
         }
 

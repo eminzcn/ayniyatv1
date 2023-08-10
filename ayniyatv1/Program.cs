@@ -11,8 +11,9 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("AppDb");
 builder.Services.AddTransient<AppDbInitializer>();
-builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(connectionString));
+builder.Services.AddDbContext<AppDbContext>(x =>  x.UseSqlServer(connectionString).EnableDetailedErrors());
 builder.Services.AddScoped<IUrunService, UrunService>();
+builder.Services.AddScoped<IPersonelService, PersonelService>();
 var app = builder.Build();
 
 

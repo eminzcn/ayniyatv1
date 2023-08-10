@@ -1,0 +1,166 @@
+﻿@using ayniyatv1.Data;
+@using System.ComponentModel.DataAnnotations;
+@model Personel;
+
+@{
+    ViewData["Title"] = "Personel Bilgileri";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>@Model.Adi @Model.Soyadi için Personel Bilgileri</h1>
+            <h3>@Model.Birimi @Model.Gorevi</h3>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+
+                <div class="form-group text-center">
+                    <img class="border-info rounded-circle" style="max-width: 150px" id="FotoOngoruntuleme" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Foto" class="control-label"></label>
+                    <input asp-for="Foto" class="form-control" placeholder="Lütfen Personele Ait Fotoğraf Ekleyiniz..." readonly />
+                    <span asp-validation-for="Foto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Adi" class="control-label"></label>
+                    <input asp-for="Adi" class="form-control" placeholder="Lütfen Personele Ait Ad Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Adi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Soyadi" class="control-label"></label>
+                    <input asp-for="Soyadi" class="form-control" placeholder="Lütfen Personele Ait Soyad Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Soyadi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Birimi" class="control-label"></label>
+                    <input asp-for="Birimi" class="form-control" placeholder="Lütfen Personele Ait Birim Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Birimi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gorevi" class="control-label"></label>
+                    <input asp-for="Gorevi" class="form-control" placeholder="Lütfen Personele Ait Görev Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Gorevi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Telefon" class="control-label"></label>
+                    <input asp-for="Telefon" class="form-control" placeholder="Lütfen Personele Ait Telefon Numarası Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Telefon" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Dahili" class="control-label"></label>
+                    <input asp-for="Dahili" class="form-control" placeholder="Lütfen Personele Ait Dahili Telefon Bilgisi Ekleyiniz..." readonly />
+                    <span asp-validation-for="Dahili" class="text-danger"></span>
+                </div>
+               
+                <div class="text-muted text-center py-2">
+                    <h5>Personele ait ürün listesi gelecek</h5>
+                    @*@{Html.RenderPartial("../Urun/Index.cshtml", Model.Urunler);}*@
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().Foto)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().Marka)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().Model)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().SeriNumarasi)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().UrunKategori)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().PersonelId)</th>
+                                        <th class="text-center">DÜZENLE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Urunler)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                <img class="rounded mx-auto d-block" src="@(item.Foto?? "https://www.unternehmerfrauen-bayern.de/wp-content/uploads/2018/10/Platzhalter.png")" alt="@item.Marka" style="max-height: 70px">
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.Marka)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.Model)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.SeriNumarasi)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.UrunKategori)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.Personel.Adi)
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Düzenle</a> |
+                                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i> Detay</a> |
+                                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i> Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group py-2">
+                    <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
+                    <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Güncelle</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+
+        $(document).ready(function () {
+            var output = document.getElementById('FotoOngoruntuleme');
+            output.src = $("#Foto").val();
+            //1._>
+            //$.ajax({
+            //    url: '@Url.Action("GetirPersonelListe","Personel")',
+            //    method: 'GET',
+            //    success: function (data) {
+            //        //$('#PersonelId').html('');
+            //        $.each(data, function (key, value) {
+            //            $('#PersonelId').append('<option value="' + value.id + '">' + value.adi + ' ' + value.soyadi + '</option>');
+            //        });
+            //    }
+
+            //});
+        });
+                //$('#PersonelId').on('input', function () {
+
+                //    var val = $(this).val();
+                //    if (val.length > 2) {
+                //        $.ajax({
+                //            url: '@Url.Action("GetirPersonel","Personel")?adSoyad=' + val,
+                //            method: 'GET',
+                //            success: function (data) {
+                //                $('#persData').html('');
+                //                $('#secPers').html('');
+
+                //                $.each(data, function (key, value) {
+                //                    $('#persData').append('<div onclick="sec(' + value.id + ',\'' + value.adi + ' ' + value.soyadi + '\')" style="border-bottom: 1px solid;">' + value.adi + ' ' + value.soyadi + '</div>');
+                //                });
+                //            }
+                //        });
+                //    }
+
+                //});
+                //function sec(id, adsoyad) {
+                //    $('#secPers').html(adsoyad);
+                //    $('#persSetId').val(id);
+                //    $('#persData').html('');
+                //    $('#PersonelId').val('');
+                //}
+
+    </script>
+    }

@@ -13,6 +13,7 @@ namespace ayniyatv1.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Urun>().Property(x => x.PersonelId).IsRequired(false);
             base.OnModelCreating(modelBuilder);
         }
         public DbSet<Urun> Urunler { get; set; }
