@@ -7,21 +7,29 @@
 }
 
 <div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1 class="text-center">@Model.Adi @Model.Soyadi için Personel Silme Onayı</h1>
-            <h3 class="text-center">@Model.Birimi @Model.Gorevi</h3>
-            <img src="@Model.Foto" class="border-info rounded-circle mx-auto d-block py-2" style="max-height: 100px" id="FotoOngoruntuleme" />
+    <div class="col-md-10 offset-1">
+        <div class="card col-md-10 offset-1 px-2 py-3">
+            <div class="col-md-3">
+                <img src="@(Model.Foto?? "https://www.seekpng.com/png/detail/110-1100707_person-avatar-placeholder.png")" class="rounded mx-auto d-block" style="max-height: 100px; width: auto" id="FotoOngoruntuleme" />
+            </div>
+            <div class="card-body col-md-9">
+                <h3 class="card-title">@Model.Adi @Model.Soyadi için Personel Silme Onayı</h3>
+                <p class="card-text">@Model.Birimi @Model.Gorevi</p>
+            </div>
+        </div>
+        <p style="display: none">
+            <h1 style="display: none" class="text-center">@Model.Adi @Model.Soyadi için Personel Silme Onayı</h1>
+            <h3 style="display: none" class="text-center">@Model.Birimi @Model.Gorevi</h3>
         </p>
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-10 offset-1">
 
                 <div class="form-group text-center">
                     <img class="border-info rounded-circle" style="max-width: 150px" id="FotoOngoruntuleme" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Foto" class="control-label"></label>
-                    <input asp-for="Foto" class="form-control" placeholder="Lütfen Personele Ait Fotoğraf Ekleyiniz..." readonly />
+                    <input asp-for="Foto" class="form-control" placeholder="Lütfen Personele Ait Fotoğraf URL'si..." readonly />
                     <span asp-validation-for="Foto" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -56,6 +64,54 @@
                 </div>
                 <div class="text-muted text-center py-2">
                     <h5>Personele Ait Ürün Listesi</h5>
+                    @*@{Html.RenderPartial("../Urun/Index.cshtml", Model.Urunler);}*@
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().Foto)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().Marka)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().Model)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().SeriNumarasi)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().UrunKategori)</th>
+                                        <th class="text-center">@Html.DisplayNameFor(model => model.Urunler.First().PersonelId)</th>
+                                        <th class="text-center">DÜZENLE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Urunler)
+                                    {
+                                        <tr>
+                                            <td class="align-middle">
+                                                <img class="rounded mx-auto d-block" src="@(item.Foto?? "https://www.unternehmerfrauen-bayern.de/wp-content/uploads/2018/10/Platzhalter.png")" alt="@item.Marka" style="max-height: 70px">
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.Marka)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.Model)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.SeriNumarasi)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.UrunKategori)
+                                            </td>
+                                            <td class="align-middle">
+                                                @Html.DisplayFor(modelItem => item.Personel.Adi)
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i> Düzenle</a> |
+                                                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i> Detay</a> |
+                                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i> Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
 
 

@@ -7,60 +7,68 @@
 }
 
 <div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1 class="text-center">@Model.Marka @Model.Model için Ürün Detayı</h1>
-            <h3 class="text-center">@Model.SeriNumarasi @Model.Personel</h3>
-            <img src="@Model.Foto" class="border-info rounded-circle mx-auto d-block py-2" style="max-height: 100px" id="FotoOngoruntuleme" />
+    <div class="col-md-10 offset-1">
+        <div class="card col-md-10 offset-1 px-2 py-3">
+            <div class="col-md-3">
+                <img src="@(Model.Foto?? "https://www.unternehmerfrauen-bayern.de/wp-content/uploads/2018/10/Platzhalter.png")" class="rounded mx-auto d-block" style="max-height: 100px; width: auto" id="FotoOngoruntuleme" />
+            </div>
+            <div class="card-body col-md-9">
+                <h3 class="card-title">@Model.Marka @Model.Model için Ürün Detayı</h3>
+                <p class="card-text">@Model.SeriNumarasi</p>
+            </div>
+        </div>
+        <p style="display: none">
+            <h1 style="display: none" class="text-center">@Model.Marka @Model.Model için Ürün Detayı</h1>
+            <h3 style="display: none" class="text-center">@Model.SeriNumarasi</h3>
         </p>
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-10 offset-1">
 
                 <div class="form-group text-center">
                     <img class="border-info rounded-circle" style="max-width: 150px" id="FotoOngoruntuleme" />
                 </div>
                 <div class="form-group">
                     <label asp-for="Foto" class="control-label"></label>
-                    <input asp-for="Foto" class="form-control" placeholder="Lütfen Ürüne Ait Fotoğraf Ekleyiniz..." readonly />
+                    <input asp-for="Foto" class="form-control" readonly />
                     <span asp-validation-for="Foto" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Marka" class="control-label"></label>
-                    <input asp-for="Marka" class="form-control" placeholder="Lütfen Ürüne Ait Marka Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="Marka" class="form-control" readonly />
                     <span asp-validation-for="Marka" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Model" class="control-label"></label>
-                    <input asp-for="Model" class="form-control" placeholder="Lütfen Ürüne Ait Model Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="Model" class="form-control" readonly />
                     <span asp-validation-for="Model" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="SeriNumarasi" class="control-label"></label>
-                    <input asp-for="SeriNumarasi" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="SeriNumarasi" class="form-control" readonly />
                     <span asp-validation-for="SeriNumarasi" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="CreateDate" class="control-label"></label>
-                    <input asp-for="CreateDate" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="CreateDate" class="form-control" readonly />
                     <span asp-validation-for="CreateDate" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="UpdateDate" class="control-label"></label>
-                    <input asp-for="UpdateDate" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="UpdateDate" class="form-control" readonly />
                     <span asp-validation-for="UpdateDate" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="UrunKategori" class="control-label"></label>
-                    <input asp-for="UrunKategori" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="UrunKategori" class="form-control" readonly />
                     <span asp-validation-for="UrunKategori" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
                     <label asp-for="PersonelId" class="control-label"></label>
-                    <input asp-for="PersonelId" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." readonly />
+                    <input asp-for="PersonelId" class="form-control" readonly />
                     <span asp-validation-for="PersonelId" class="text-danger"></span>
                 </div>
 
@@ -124,6 +132,6 @@
         $("#Foto").on("change", function () {
             var output = document.getElementById('FotoOngoruntuleme');
             output.src = $(this).val();
-
+        })
     </script>
     }

@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 </head>
 <body>
-    <header>
+    <header class="sticky-top">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ZİMMET</a>
@@ -20,7 +20,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        
+
                         <li class="navbar-nav">
                             <a class="nav-link text-dark" asp-controller="Personel" asp-action="Index"><i class="badge-info bi-person-fill"></i>Personeller</a>
                         </li>
@@ -30,12 +30,12 @@
                         </li>
 
                         @*<li class="navbar-nav dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="badge-info bi-speaker"></i>Ürünler
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item"></a>
-                            </div>
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="button" aria-haspopup="true" aria-expanded="false">
+                        <i class="badge-info bi-speaker"></i>Ürünler
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item"></a>
+                        </div>
                         </li>*@
 
                     </ul>
@@ -52,9 +52,10 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-white">
         <div class="container">
-            &copy; 2023 - ayniyatv1 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <span>AK PARTİ Seçim İşleri Başkanlığı</span>
+            <span class="float-end">&copy; 2023</span>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -7,16 +7,26 @@
 }
 
 <div class="row text">
-    <div class="col-md-8 offset-2">
-        <p>
-            <h1 class="text-center">Ürün Güncelle</h1>
+    <div class="col-md-10 offset-1">
+        <div class="card col-md-10 offset-1 px-2 py-3">
+            <div class="col-md-3">
+                <img src="@(Model.Foto?? "https://www.unternehmerfrauen-bayern.de/wp-content/uploads/2018/10/Platzhalter.png")" class="rounded mx-auto d-block" style="max-height: 100px; width: auto" id="FotoOngoruntuleme" />
+            </div>
+            <div class="card-body col-md-9">
+                <h3 class="card-title">@Model.Marka @Model.Model için Ürün Güncelleme</h3>
+                <p class="card-text">@Model.SeriNumarasi</p>
+            </div>
+        </div>
+        <p style="display: none">
+            <h1 style="display: none" class="text-center">@Model.Marka @Model.Model için Ürün Düzenleme</h1>
+            <h3 style="display: none" class="text-center">@Model.SeriNumarasi</h3>
         </p>
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-10 offset-1">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger">
                     </div>
-                    <input type="hidden" asp-for="Id"/>
+                    <input type="hidden" asp-for="Id" />
                     <div class="form-group text-center">
                         <img class="border-info rounded-circle" style="max-width: 150px" id="FotoOngoruntuleme" />
                     </div>
@@ -40,16 +50,21 @@
                         <input asp-for="SeriNumarasi" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." />
                         <span asp-validation-for="SeriNumarasi" class="text-danger"></span>
                     </div>
+                    <div class="form-group">
+                        <label asp-for="UpdateDate" class="control-label"></label>
+                        <input asp-for="UpdateDate" class="form-control" placeholder="Lütfen Ürüne Ait Fotoğraf Ekleyiniz..." />
+                        <span asp-validation-for="UpdateDate" class="text-danger"></span>
+                    </div>
 
                     <div class="form-group">
                         <label asp-for="UrunKategori" class="control-label"></label>
                         <div>
-                         
+
                             <select class="form-control text-secondary" asp-for="UrunKategori">
                                 <option selected="selected" value="">Lütfen Kategori Seçiniz...</option>
                                 @foreach (var item in Html.GetEnumSelectList<UrunKategori>())
                                 {
-                                    <!option value="@item.Value" @(item.Value == ((int)Model.UrunKategori).ToString()?"selected" : "")>@item.Text</!option>
+                                    <!option value="@item.Value" @(item.Value == ((int)Model.UrunKategori).ToString() ? "selected" : "")>@item.Text</!option>
                                 }
 
                                 <span asp-validation-for="UrunKategori" class="text-danger" />
@@ -58,28 +73,14 @@
                         </div>
                     </div>
 
-                     @*1._> *@ 
-                     <div class="form-group">
-                    <label asp-for="PersonelId" class="control-label"></label>
-                    <select asp-for="PersonelId" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." >
-                    <!option value="">Seçiniz</!option>
-                    </select>
-                    <span asp-validation-for="PersonelId" class="text-danger"></span>
-                    </div>
-                    @*<div class="form-group">
+                    @*1._> *@
+                    <div class="form-group">
                         <label asp-for="PersonelId" class="control-label"></label>
-                        <div id="secPers"></div>
-                        <input id="persSetId" type="hidden" name="PersonelId" />
-                        <input id="PersonelId" type="text" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." />
+                        <select asp-for="PersonelId" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz...">
+                            <!option value="">Seçiniz</!option>
+                        </select>
                         <span asp-validation-for="PersonelId" class="text-danger"></span>
-                        <div id="persData">
-                        </div>
-                    </div>*@
-                    @*      <div class="form-group">
-                    <label asp-for="PersonelId" class="control-label"></label>
-                    <input asp-for="PersonelId" class="form-control" placeholder="Lütfen Ürüne Ait Seri Numarası Bilgisi Ekleyiniz..." />
-                    <span asp-validation-for="PersonelId" class="text-danger"></span>
-                    </div>*@
+                    </div>
 
                     <div class="form-group py-2">
                         <a class="btn btn-outline-secondary" asp-action="Index">Hepsini Görüntüle</a>
@@ -138,6 +139,6 @@
         $("#Foto").on("change", function () {
             var output = document.getElementById('FotoOngoruntuleme');
             output.src = $(this).val();
-
+        })
     </script>
     }
